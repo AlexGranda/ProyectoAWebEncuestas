@@ -16,6 +16,10 @@ module.exports = {
     texto: {
       type: 'string',
       required: true
+    },
+    encuestas: {
+      collection: 'Encuesta',
+      via: 'etiquetas'
     }
   }
 };

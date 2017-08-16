@@ -36,6 +36,11 @@ module.exports = {
     },
     idUsuario: {
       model: 'Usuario'
+    },
+    etiquetas: {
+      collection: 'Etiqueta',
+      via: 'encuestas',
+      dominant: true
     }
   }
 };
