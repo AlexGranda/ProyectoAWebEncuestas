@@ -29,6 +29,10 @@ module.exports = {
     },
     dislikes: {
       type: 'integer'
+    },
+    comentarios: {
+      collection: 'Comentario',
+      via:'idEncuesta'
     }
   }
 };

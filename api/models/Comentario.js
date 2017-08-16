@@ -23,6 +23,9 @@ module.exports = {
     },
     idUsuario: {
       model: 'Usuario'
+    },
+    idEncuesta: {
+      model: 'Encuesta'
     }
 
   }
