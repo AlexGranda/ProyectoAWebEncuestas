@@ -1,3 +1,3 @@
-# ProyectoAWebEncuestas
-Pàgina donde los usuarios pueden realizar sus encuestas :)
-Test
+# Encuestas
+
+a [Sails](http://sailsjs.org) application
