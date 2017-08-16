@@ -33,6 +33,9 @@ module.exports = {
     comentarios: {
       collection: 'Comentario',
       via:'idEncuesta'
+    },
+    idUsuario: {
+      model: 'Usuario'
     }
   }
 };

@@ -35,6 +35,10 @@ module.exports = {
     comentarios: {
       collection: 'Comentario',
       via: 'idUsuario'
+    },
+    encuestas: {
+      collection: 'Encuesta',
+      via: 'idUsuario'
     }
   }
 };
