@@ -63,9 +63,18 @@
             </div>
           </a>
         </div>
-        <div class="row">
-          Comentarios
-        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <% for(var i=0; i<comentarios.length; i++) {%>
+          <div class="row">
+            Comentarios
+            <!-- <h1><%= comentarios[i].usuario.id %></h1> -->
+            <h2><%= comentarios[i].fechaCreacion %></h2>
+            <p><%= comentarios[i].texto %></p>
+          </div>
+        <% }%>
       </div>
     </div>
   </body>

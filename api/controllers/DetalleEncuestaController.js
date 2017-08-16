@@ -9,12 +9,18 @@ module.exports = {
 	listarEncuesta: function (req, res) {
 		idEncuesta = req.param('idEncuesta');
 
-		Encuesta.find({
+		Encuesta.findOne({
 			id: idEncuesta
 		}).exec(function (error, encuestaEncontrada) {
-			res.view('detalleencuesta', {
-					encuesta: encuestaEncontrada
-			});
+
+				Comentario.find({
+					idEncuesta: encuestaEncontrada
+				}).exec(function (error, cometariosEncontrados) {
+					res.view('detalleencuesta', {
+							encuesta: encuestaEncontrada,
+							comentarios: cometariosEncontrados
+					});
+				})
 		})
 	}
 };
