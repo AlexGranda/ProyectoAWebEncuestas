@@ -43,7 +43,9 @@ module.exports.routes = {
   },
   '/encuestas': {
     view: 'encuestas'
-  }
+  },
+  'get /crearUsuario': 'LoginController.crearUsuario'
+
 
   /***************************************************************************
   *                                                                          *
