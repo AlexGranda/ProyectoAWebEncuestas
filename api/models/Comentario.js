@@ -20,6 +20,10 @@ module.exports = {
     texto: {
       type: 'string',
       required: true
+    },
+    idUsuario: {
+      model: 'Usuario'
     }
+
   }
 };

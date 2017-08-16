@@ -31,6 +31,10 @@ module.exports = {
     correo: {
       type: 'email',
       unique: true
+    },
+    comentarios: {
+      collection: 'Comentario',
+      via: 'idUsuario'
     }
   }
 };
