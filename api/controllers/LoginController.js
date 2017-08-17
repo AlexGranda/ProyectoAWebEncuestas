@@ -37,9 +37,11 @@ module.exports = {
                 Encuesta
                   .find()
                   .exec(function (error, encuestasEncontradas) {
+
+                    res.cookie('idUsuario', usuarioEncontrado.id);
+
                     return res.view('encuestas', {
                       encuestas: encuestasEncontradas,
-                      usuario: usuarioEncontrado
                     });
                   })
               }

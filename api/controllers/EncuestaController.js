@@ -6,21 +6,6 @@
  */
 
 module.exports = {
-  crearEncuesta: function (req, res) {
-    parametros = req.allParams();
-
-    if (re.method == "POST" && parametros.id) {
-      Usuario
-        .destroy({id: params.id})
-        .exec(function (err, usuarioDestruidoRawr) {
-          if (err)
-            return res.negotiate(err);
-          return res.view('encuestas')
-        })
-    } else {
-      return res.badRequest();
-    }
-  },
 
   editarEncuesta: function (req, res) {
     parametros = req.allParams();
@@ -36,8 +21,7 @@ module.exports = {
 
   listarMisEncuestas: function (req, res) {
 
-    parametros = req.allParams();
-    idUsuario = parametros.idUsuario
+    idUsuario = req.cookies.idUsuario;
 
     Usuario.findOne({
       id: idUsuario
@@ -57,5 +41,49 @@ module.exports = {
           })
         })
     })
-  }
+  },
+
+  crearEncuesta: function (req, res) {
+    parametros = req.allParams();
+    idUsuario = req.cookies.idUsuario;
+
+    console.log(parametros);
+    console.log(idUsuario);
+
+    Usuario.findOne({
+      id: idUsuario
+    }).exec(function (error, usuarioEncontrado) {
+
+      if (error) {
+        console.log(error);
+      }
+
+      encuesta = {
+        titulo: parametros.titulo,
+        descripcion: parametros.descripcion,
+        idUsuario: usuarioEncontrado
+      }
+
+      Encuesta.create(encuesta).exec(function (error, encuestaCreada) {
+
+        if (error) {
+          console.log(error);
+        }
+
+        // Buscar encuetas por usuario
+        Encuesta
+          .find({idUsuario: idUsuario})
+          .exec(function (error, encuestasEncontradas) {
+
+            return res.view('misEncuestas', {
+              encuestas: encuestasEncontradas,
+              usuario: usuarioEncontrado
+            })
+          })
+
+      })
+
+    })
+
+  },
 };
