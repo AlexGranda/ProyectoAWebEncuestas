@@ -23,22 +23,12 @@ module.exports = {
 
     idUsuario = req.cookies.idUsuario;
 
-    Usuario.findOne({
-      id: idUsuario
-    }).exec(function (error, usuarioEncontrado) {
+    Encuesta
+      .find({idUsuario: idUsuario})
+      .exec(function (error, encuestasEncontradas) {
 
-      if (!usuarioEncontrado) {
-        res.serverError('No existe el usuario')
-      }
-
-      Encuesta
-        .find({idUsuario: idUsuario})
-        .exec(function (error, encuestasEncontradas) {
-
-          return res.view('misEncuestas', {
-            encuestas: encuestasEncontradas,
-            usuario: usuarioEncontrado
-          })
+        return res.view('misEncuestas', {
+          encuestas: encuestasEncontradas
         })
     })
   },
