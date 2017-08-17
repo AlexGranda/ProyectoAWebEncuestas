@@ -42,10 +42,10 @@ module.exports.routes = {
     view: 'login'
   },
   '/login/autenticar': 'LoginController.login',
-
   '/encuestas': 'EncuestaController.listarEncuestas',
   '/encuestas/detalle/:idEncuesta': 'DetalleEncuestaController.listarEncuesta',
   '/encuestas/detalle/:idEncuesta/meGusta': 'DetalleEncuestaController.meGusta',
+  '/encuestas/detalle/:idEncuesta/noMeGusta': 'DetalleEncuestaController.noMeGusta',
 
   '/encuestas/crear': {
     view: 'crearEncuesta'
