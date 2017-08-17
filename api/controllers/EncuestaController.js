@@ -9,6 +9,26 @@ module.exports = {
 
   editarEncuesta: function (req, res) {
     parametros = req.allParams();
+
+    if(parametros.titulo && parametros.descripcion && parametros.id && parametros.idUsuario)
+    {
+      Encuesta.update({
+          id:parametros.id
+        },
+        {
+          titulo: parametros.titulo,
+          descripcion: parametros.descripcion
+        }).exec(function (err, encuestaEditada) {
+        if(err) return res.serverError(err);
+        if(encuestaEditada){
+
+          Encuesta.find({idUsuario:parametros.idUsuario}).exec(function (err, encuestas) {
+            return res.view('misEncuestas', {encuestas:encuestas});
+          })
+          return res.view('misEncuestas',{});
+        }
+      })
+    }
   },
 
   listarEncuestas: function (req, res) {
@@ -76,4 +96,41 @@ module.exports = {
     })
 
   },
+  eliminarEncuesta: function (req, res) {
+    parametros = req.allParams()
+
+    if(req.method == "POST" && parametros.id)
+    {
+      Encuesta.destroy({
+        id:parametros.id
+      }).exec(function (error, usuarioDestruido) {
+        if(err) return res.serverError(err);
+
+        return res.redirect('encuestas/misencuestas')
+      })
+    }
+    else {
+      res.badRequest();
+    }
+
+  },
+  llamarVistaEditarUsuario: function (req, res) {
+    parametros = req.allParams();
+
+    if(parametros.id){
+      Encuesta.findOne({
+        id:parametros.id
+      }).exec(function (err, encuestaEncontrada) {
+        if(err) return res.serverError(err)
+
+        if (encuestaEncontrada){
+          return res.view('editarEncuesta', {encuesta:encuestaEncontrada});
+        }
+        else {
+          res.redirect('/')
+        }
+
+      })
+    }
+  }
 };

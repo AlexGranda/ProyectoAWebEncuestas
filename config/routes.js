@@ -55,7 +55,8 @@ module.exports.routes = {
 
   '/crearUsuario':{
     view: 'crearUsuario'
-  }
+  },
+  'GET /editarUsuario': 'EncuestaController.llamarVistaEditarUsuario'
 
 
   /***************************************************************************
