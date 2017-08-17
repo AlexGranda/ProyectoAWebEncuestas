@@ -8,11 +8,6 @@
 module.exports = {
 
   attributes: {
-    id:{
-      type:'integer',
-      unique: true,
-      primaryKey: true,
-    },
     titulo: {
       type: 'string',
       required: true
@@ -20,9 +15,6 @@ module.exports = {
     descripcion: {
       type: 'string',
       required: true
-    },
-    imagen: {
-      type: 'binary',
     },
     likes: {
       type: 'integer'

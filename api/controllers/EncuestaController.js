@@ -26,7 +26,7 @@ module.exports = {
 
 
 
-  }
+  },
 	listarEncuestas: function (req, res) {
 		Encuesta.find().exec(function (error, encuestasEncontradas) {
 			res.view('encuestas', {
