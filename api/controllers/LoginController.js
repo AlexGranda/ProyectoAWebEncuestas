@@ -5,6 +5,8 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var Passwords = require('machinepack-passwords')
+
 module.exports = {
   logIn: function (req, res) {
     var parametros = req.allParams()
@@ -56,7 +58,7 @@ module.exports = {
               res.serverError('Contrasenia encriptada incorrecta')
             },
             success: function () {
-              res.view('homepage')
+              res.view('encuestas')
             }
           })
         }
