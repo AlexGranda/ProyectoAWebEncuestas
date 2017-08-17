@@ -16,7 +16,7 @@ module.exports = {
 				Comentario.find({
 					idEncuesta: encuestaEncontrada
 				}).exec(function (error, cometariosEncontrados) {
-					res.view('detalleencuesta', {
+					res.view('detalleEncuesta', {
 							encuesta: encuestaEncontrada,
 							comentarios: cometariosEncontrados
 					});
