@@ -47,20 +47,18 @@
               <h1><%= encuesta.titulo %></h1>
               <p><%= encuesta.descripcion %></p>
             </div>
-            <div class="">
-              Grafico Votacion
-              <div class="col-md-6">
-                <img src="images/2015-01-07-Iowa-GOP-poll.jpg" class="img-responsive" width="300px">
-              </div>
+          </a>
+          <div class="">
+            Grafico Votacion
+            <div class="col-md-6">
+              <img src="/images/2015-01-07-Iowa-GOP-poll.jpg" class="img-responsive" width="300px">
             </div>
-            <div class="">
-              Me gusta
-              <%= encuesta.likes %>
-            </div>
-            <div class="">
-              No me gusta
-              <%= encuesta.dislikes %>
-            </div>
+          </div>
+          <a href='/encuestas/detalle/<%= encuesta.id %>/meGusta'>
+            <button class="btn btn-success" type="button" name="button">Me gusta</button>
+          </a>
+          <a href='#'>
+            <button class="btn btn-success" type="button" name="button">No me gusta</button>
           </a>
         </div>
       </div>

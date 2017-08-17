@@ -45,6 +45,7 @@ module.exports.routes = {
 
   '/encuestas': 'EncuestaController.listarEncuestas',
   '/encuestas/detalle/:idEncuesta': 'DetalleEncuestaController.listarEncuesta',
+  '/encuestas/detalle/:idEncuesta/meGusta': 'DetalleEncuestaController.meGusta',
 
   '/encuestas/crear': {
     view: 'crearEncuesta'

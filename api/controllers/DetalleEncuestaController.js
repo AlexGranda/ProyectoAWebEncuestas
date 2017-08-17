@@ -22,5 +22,32 @@ module.exports = {
 					});
 				})
 		})
+	},
+
+	meGusta: function (req, res) {
+		idEncuesta = req.param('idEncuesta');
+
+		Encuesta.findOne({
+			id:idEncuesta
+		}).exec(function (error, encuestaEncontrada) {
+
+			Encuesta.update({
+				id: idEncuesta
+			},{
+				likes: encuestaEncontrada.likes + 1
+			}).exec(function (error, encuestaActualizada) {
+
+				Comentario.find({
+					idEncuesta: idEncuesta
+				}).exec(function (error, cometariosEncontrados) {
+
+					console.log(encuestaActualizada.likes);
+					return res.view('detalleEncuesta', {
+							encuesta: encuestaActualizada,
+							comentarios: cometariosEncontrados
+					});
+				})
+			})
+		})
 	}
 };
