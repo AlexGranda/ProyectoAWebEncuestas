@@ -24,8 +24,15 @@ module.exports = {
   editarEncuesta: function (req, res) {
     parametros = req.allParams();
 
-    
+
 
   }
+	listarEncuestas: function (req, res) {
+		Encuesta.find().exec(function (error, encuestasEncontradas) {
+			res.view('encuestas', {
+					encuestas: encuestasEncontradas
+			});
+		})
+	}
 };
 
