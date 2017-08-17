@@ -10,29 +10,52 @@ module.exports = {
     parametros = req.allParams();
 
     if (re.method == "POST" && parametros.id) {
-      Usuario.destroy({
-        id: params.id
-      }).exec(function (err, usuarioDestruidoRawr) {
-        if (err) return res.negotiate(err);
-        return res.view('encuestas')
-      })
-    }
-    else {
+      Usuario
+        .destroy({id: params.id})
+        .exec(function (err, usuarioDestruidoRawr) {
+          if (err)
+            return res.negotiate(err);
+          return res.view('encuestas')
+        })
+    } else {
       return res.badRequest();
     }
   },
+
   editarEncuesta: function (req, res) {
     parametros = req.allParams();
-
-
-
   },
-	listarEncuestas: function (req, res) {
-		Encuesta.find().exec(function (error, encuestasEncontradas) {
-			res.view('encuestas', {
-					encuestas: encuestasEncontradas
-			});
-		})
-	}
-};
 
+  listarEncuestas: function (req, res) {
+    Encuesta
+      .find()
+      .exec(function (error, encuestasEncontradas) {
+        res.view('encuestas', {encuestas: encuestasEncontradas});
+      })
+  },
+
+  listarMisEncuestas: function (req, res) {
+
+    parametros = req.allParams();
+    idUsuario = parametros.idUsuario
+
+    Usuario.findOne({
+      id: idUsuario
+    }).exec(function (error, usuarioEncontrado) {
+
+      if (!usuarioEncontrado) {
+        res.serverError('No existe el usuario')
+      }
+
+      Encuesta
+        .find({idUsuario: idUsuario})
+        .exec(function (error, encuestasEncontradas) {
+
+          return res.view('misEncuestas', {
+            encuestas: encuestasEncontradas,
+            usuario: usuarioEncontrado
+          })
+        })
+    })
+  }
+};

@@ -41,10 +41,13 @@ module.exports.routes = {
   '/login': {
     view: 'login'
   },
-  '/login/autenticar': 'LoginController.login', 
+  '/login/autenticar': 'LoginController.login',
+
   '/encuestas': 'EncuestaController.listarEncuestas',
   '/encuestas/detalle/:idEncuesta': 'DetalleEncuestaController.listarEncuesta',
 
+  '/encuestas/:idUsuario':'EncuestaController.listarMisEncuestas',
+  
   '/crearUsuario':{
     view: 'crearUsuario'
   }
