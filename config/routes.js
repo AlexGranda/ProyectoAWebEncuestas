@@ -41,17 +41,11 @@ module.exports.routes = {
   '/login': {
     view: 'login'
   },
-<<<<<<< HEAD
   '/encuestas': 'EncuestaController.listarEncuestas',
-  '/encuestas/detalle/:idEncuesta': 'DetalleEncuestaController.listarEncuesta'
-=======
-  '/encuestas': {
-    view: 'encuestas'
-  },
+  '/encuestas/detalle/:idEncuesta': 'DetalleEncuestaController.listarEncuesta',
   '/crearUsuario':{
     view: 'crearUsuario'
   }
->>>>>>> 6ecad137e17c6757e22ab7ca083528aed2839001
 
 
   /***************************************************************************
