@@ -18,7 +18,6 @@
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
   'styles/**/*.css',
-  'Bootstrap/css/*.css'
 ];
 
 
@@ -35,7 +34,6 @@ var jsFilesToInject = [
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
   'js/**/*.js',
-  'Bootstrap/js/*.js'
 ];
 
 
@@ -85,5 +83,3 @@ module.exports.templateFilesToInject = templateFilesToInject.map(function(tplPat
   }
   return require('path').join('assets/',tplPath);
 });
-
-
