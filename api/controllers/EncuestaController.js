@@ -9,6 +9,26 @@ module.exports = {
 
   editarEncuesta: function (req, res) {
     parametros = req.allParams();
+
+    if(parametros.titulo && parametros.descripcion && parametros.id && parametros.idUsuario)
+    {
+      Encuesta.update({
+          id:parametros.id
+        },
+        {
+          titulo: parametros.titulo,
+          descripcion: parametros.descripcion
+        }).exec(function (err, encuestaEditada) {
+        if(err) return res.serverError(err);
+        if(encuestaEditada){
+
+          Encuesta.find({idUsuario:parametros.idUsuario}).exec(function (err, encuestas) {
+            return res.view('misEncuestas', {encuestas:encuestas});
+          })
+          return res.view('misEncuestas',{});
+        }
+      })
+    }
   },
 
   listarEncuestas: function (req, res) {
