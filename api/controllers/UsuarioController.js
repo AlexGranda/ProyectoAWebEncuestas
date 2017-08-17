@@ -30,7 +30,10 @@ module.exports = {
           else {
 
             Encuesta.find().exec(function (error, encuestasEncontradas) {
-        			return res.view('encuestas', {
+
+              res.cookie('idUsuario', usuarioCreado.id);
+
+              return res.view('encuestas', {
         					encuestas: encuestasEncontradas,
                   usuario: nuevoUsuario
         			});
