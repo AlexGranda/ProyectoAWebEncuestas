@@ -1,51 +1,92 @@
-<body>
-<h1>Crear Usuario</h1>
-<form action="/Usuario/crearUsuario" method="get">
-  <div class="form-group row">
-    <label for="nombres" class="col-2 col-form-label">Nombres</label>
-    <div class="col-10">
-      <input class="form-control" type="text" id="nombres" placeholder="Ingrese sus nombres"
-             name="nombres">
+<div class="navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Encuestas</span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/">Principal</a>
+        </li>
+        <li>
+          <a href="/encuestas">Encuestas</a>
+        </li>
+        <li>
+          <a href="/contactos">Contactos</a>
+        </li>
+        <li>
+          <a href="/login">Login</a>
+        </li>
+        <li class="active">
+          <a href="#">Autenticar</a>
+        </li>
+      </ul>
     </div>
   </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Crear Usuario</h1>
+        <form class="form-horizontal" action="/Usuario/crearUsuario" method="get">
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="nombres" class="col-2 col-form-label">Nombres</label>
+            </div>
+            <div class="col-sm-10">
+              <input class="form-control" type="text" id="nombres" placeholder="Ingrese sus nombres" name="nombres">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="apellidos" class="col-2 col-form-label">Apellidos</label>
+            </div>
+            <div class="col-sm-10">
+              <input class="form-control" type="text" id="apellidos" placeholder="Ingrese sus apellidos" name="apellidos">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="email" class="col-2 col-form-label">Email</label>
+            </div>
+            <div class="col-sm-10">
+              <input class="form-control" type="email" placeholder="Ingrese su email" id="example-email-input" name="correo">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="password" class="col-2 col-form-label">Password</label>
+            </div>
+            <div class="col-sm-10">
+              <input class="form-control" type="password" placeholder="Ingrese su contrasenia" id="example-password-input" name="password">
+            </div>
+          </div>
 
-  <div class="form-group row">
-    <label for="apellidos" class="col-2 col-form-label">Apellidos</label>
-    <div class="col-10">
-      <input class="form-control" type="text" id="apellidos" placeholder="Ingrese sus apellidos"
-             name="apellidos">
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="example-date-input" class="col-2 col-form-label">Date</label>
+            </div>
+            <div class="col-sm-10">
+              <input class="form-control" type="date" value="2011-08-19" id="example-date-input" name="fechaNacimiento">
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="reset" class="btn btn-default">Reset</button>
+                <button type="submit" class="btn btn-default">Crear</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-
-  <div class="form-group row">
-    <label for="email" class="col-2 col-form-label">Email</label>
-    <div class="col-10">
-      <input class="form-control" type="email" placeholder="Ingrese su email" id="example-email-input"
-             name="correo">
-    </div>
-  </div>
-
-
-  <div class="form-group row">
-    <label for="password" class="col-2 col-form-label">Password</label>
-    <div class="col-10">
-      <input class="form-control" type="password" placeholder="Ingrese su contrasenia" id="example-password-input"
-             name="password">
-    </div>
-  </div>
-
-
-  <div class="form-group row">
-    <label for="example-date-input" class="col-2 col-form-label">Date</label>
-    <div class="col-10">
-      <input class="form-control" type="date" value="2011-08-19" id="example-date-input"
-             name="fechaNacimiento">
-    </div>
-
-    <button type="reset" class="btn btn-outline-secondary">Reset</button>
-    <button type="submit" class="btn btn-outline-success">Crear</button>
-    <button class="btn btn-outline-warning">Nada</button>
-  </div>
-</form>
-</body>
-
+</div>
