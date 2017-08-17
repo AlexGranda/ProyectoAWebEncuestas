@@ -28,7 +28,13 @@ module.exports = {
           if (error)
             return res.serverError(error);
           else {
-            return res.view('homepage');
+
+            Encuesta.find().exec(function (error, encuestasEncontradas) {
+        			return res.view('encuestas', {
+        					encuestas: encuestasEncontradas,
+                  usuario: nuevoUsuario
+        			});
+        		})
           }
         });
       }
@@ -36,4 +42,3 @@ module.exports = {
   },
 
 };
-

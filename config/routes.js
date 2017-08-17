@@ -43,6 +43,7 @@ module.exports.routes = {
   },
   '/encuestas': 'EncuestaController.listarEncuestas',
   '/encuestas/detalle/:idEncuesta': 'DetalleEncuestaController.listarEncuesta',
+
   '/crearUsuario':{
     view: 'crearUsuario'
   }
