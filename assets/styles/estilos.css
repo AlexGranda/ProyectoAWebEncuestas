@@ -80,3 +80,10 @@ a.float:hover + div.label-container{
   visibility: visible;
   opacity: 1;
 }
+
+/*
+  Footer-border
+*/
+.footer-card {
+  padding: 10px;
+}
