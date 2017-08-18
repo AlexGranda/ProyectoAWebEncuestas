@@ -65,11 +65,16 @@
       <div class="container">
         <% for(var i=0; i<comentarios.length; i++) {%>
           <div class="row">
-            Comentarios
-            <h2><%= comentarios[i].fechaCreacion %></h2>
+            <h4><%= comentarios[i].fechaCreacion %></h4>
             <p><%= comentarios[i].texto %></p>
           </div>
         <% }%>
+        <h1>Comenta</h1>
+        <form action="/Comentario/agregarComentario" method="post">
+          <input type="text" name="texto" value="">
+          <input type="hidden" name="idEncuesta" value="<%= encuesta.id %>">
+          <button type="submit" name="button"></button>
+        </form>
       </div>
     </div>
   </body>

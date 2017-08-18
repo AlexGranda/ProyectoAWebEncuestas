@@ -11,16 +11,16 @@ module.exports = {
 
 		Encuesta.findOne({
 			id: idEncuesta
-		}).exec(function (error, encuestaEncontrada) {
+		})
+		.populate('comentarios')
+		.exec(function (error, encuestaEncontrada) {
 
-				Comentario.find({
-					idEncuesta: encuestaEncontrada
-				}).exec(function (error, cometariosEncontrados) {
-					res.view('detalleEncuesta', {
-							encuesta: encuestaEncontrada,
-							comentarios: cometariosEncontrados
-					});
-				})
+				console.log(encuestaEncontrada);
+
+				res.view('detalleEncuesta', {
+						encuesta: encuestaEncontrada,
+						comentarios: encuestaEncontrada.comentarios
+				});
 		})
 	},
 
