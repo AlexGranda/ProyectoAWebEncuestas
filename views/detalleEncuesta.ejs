@@ -42,25 +42,21 @@
     <div class="section">
       <div class="container">
         <div class="row">
-          <a href="detalleEncuesta.html">
+          <div class="col-md-6">
+            <h1><%= encuesta.titulo %></h1>
+            <p><%= encuesta.descripcion %></p>
+          </div>
+          <div class="">
+            Grafico Votacion
             <div class="col-md-6">
-              <h1><%= encuesta.titulo %></h1>
-              <p><%= encuesta.descripcion %></p>
+              <img src="/images/2015-01-07-Iowa-GOP-poll.jpg" class="img-responsive" width="300px">
             </div>
-            <div class="">
-              Grafico Votacion
-              <div class="col-md-6">
-                <img src="images/2015-01-07-Iowa-GOP-poll.jpg" class="img-responsive" width="300px">
-              </div>
-            </div>
-            <div class="">
-              Me gusta
-              <%= encuesta.likes %>
-            </div>
-            <div class="">
-              No me gusta
-              <%= encuesta.dislikes %>
-            </div>
+          </div>
+          <a href='/encuestas/detalle/<%= encuesta.id %>/meGusta'>
+            <button class="btn btn-success" type="button" name="button">Me gusta</button>
+          </a>
+          <a href='/encuestas/detalle/<%= encuesta.id %>/nomegusta'>
+            <button class="btn btn-success" type="button" name="button">No me gusta</button>
           </a>
         </div>
       </div>
@@ -69,12 +65,16 @@
       <div class="container">
         <% for(var i=0; i<comentarios.length; i++) {%>
           <div class="row">
-            Comentarios
-            <!-- <h1><%= comentarios[i].usuario.id %></h1> -->
-            <h2><%= comentarios[i].fechaCreacion %></h2>
+            <h4><%= comentarios[i].fechaCreacion %></h4>
             <p><%= comentarios[i].texto %></p>
           </div>
         <% }%>
+        <h1>Comenta</h1>
+        <form action="/Comentario/agregarComentario" method="post">
+          <input type="text" name="texto" value="">
+          <input type="hidden" name="idEncuesta" value="<%= encuesta.id %>">
+          <button type="submit" name="button"></button>
+        </form>
       </div>
     </div>
   </body>

@@ -17,10 +17,12 @@ module.exports = {
       required: true
     },
     likes: {
-      type: 'integer'
+      type: 'integer',
+      defaultsTo: 0
     },
     dislikes: {
-      type: 'integer'
+      type: 'integer',
+      defaultsTo: 0
     },
     comentarios: {
       collection: 'Comentario',
