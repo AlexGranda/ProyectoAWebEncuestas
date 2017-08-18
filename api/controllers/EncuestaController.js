@@ -10,7 +10,9 @@ module.exports = {
   editarEncuesta: function (req, res) {
     parametros = req.allParams();
 
-    if(parametros.titulo && parametros.descripcion && parametros.id && parametros.idUsuario)
+
+
+    if(parametros.titulo && parametros.descripcion && parametros.id)
     {
       Encuesta.update({
           id:parametros.id
@@ -22,10 +24,20 @@ module.exports = {
         if(err) return res.serverError(err);
         if(encuestaEditada){
 
-          Encuesta.find({idUsuario:parametros.idUsuario}).exec(function (err, encuestas) {
-            return res.view('misEncuestas', {encuestas:encuestas});
+          Usuario.findOne({
+            id:parametros.idUsuario
+          }).exec(function (err, usuarioEncontrado) {
+            if(err) return res.serverError(err)
+
+            Encuesta.find({idUsuario:parametros.idUsuario}).exec(function (err, encuestas) {
+              return res.view('misEncuestas', {usuario:usuarioEncontrado,encuestas:encuestas});
+            })
+
           })
-          return res.view('misEncuestas',{});
+
+
+
+
         }
       })
     }
@@ -99,14 +111,16 @@ module.exports = {
   eliminarEncuesta: function (req, res) {
     parametros = req.allParams()
 
-    if(req.method == "POST" && parametros.id)
+    sails.log.info(parametros)
+
+    if(parametros.id)
     {
       Encuesta.destroy({
         id:parametros.id
       }).exec(function (error, usuarioDestruido) {
-        if(err) return res.serverError(err);
+        if(error) return res.serverError(err);
 
-        return res.redirect('encuestas/misencuestas')
+        if(usuarioDestruido) return res.redirect('/encuestas/misencuestas')
       })
     }
     else {
@@ -114,8 +128,10 @@ module.exports = {
     }
 
   },
-  llamarVistaEditarUsuario: function (req, res) {
+  llamarVistaEditarEncuesta: function (req, res) {
     parametros = req.allParams();
+
+    sails.log.info(parametros)
 
     if(parametros.id){
       Encuesta.findOne({
@@ -129,7 +145,6 @@ module.exports = {
         else {
           res.redirect('/')
         }
-
       })
     }
   }

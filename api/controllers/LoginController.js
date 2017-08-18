@@ -71,9 +71,9 @@ module.exports = {
 
                     res.cookie('idUsuario', usuarioEncontrado.id);
 
+
                     return res.view('encuestas', {
-                      encuestas: encuestasEncontradas,
-                    });
+                      encuestas: encuestasEncontradas, idUsuario:usuarioEncontrado.id});
                   })
               }
             })

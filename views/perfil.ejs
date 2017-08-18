@@ -26,43 +26,31 @@
           <a href="/contactos">Contactos</a>
         </li>
         <li>
-          <a href="#">Mi perfil</a>:
+          <a href="#">Hola
+            <%= usuario.nombres %></a>:
         </li>
       </ul>
     </div>
   </div>
 </div>
-
 <div class="section">
   <div class="container">
     <div class="row">
-      <h1>Mis encuestas</h1>
+      <div class="col-md-12">
+        <h1 class="text-center text-primary">Perfil</h1>
+        <p class="text-center">Mira tu info, edita como el mundo te ve :)</p>
+      </div>
     </div>
-  </div>
-</div>
-
-<% for(var i=0; i<encuestas.length; i++) {%>
-  <div class="section">
-    <div class="container">
-      <div class="row">
-        <a href="/encuestas/detalle/<%= encuestas[i].id %>">
-          <div class="col-md-6">
-            <h1><%= encuestas[i].titulo %></h1>
-            <p><%= encuestas[i].descripcion %></p>
-          </div>
-          <div class="col-md-6">
-            <img src="/images/2015-01-07-Iowa-GOP-poll.jpg" class="img-responsive" width="300px">
-          </div>
+    <div class="row text-center">
+      </div>
+      <div class="col-md-12">
+        <img src="http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png" class="center-block img-circle img-responsive">
+        <h3 class="text-center"><%=usuario.nombres%> <%=usuario.apellidos%></h3>
+        <p class="text-center">User</p>
+        <a href="#">
+          <button type="button" class="btn btn-outline-success">Edita tu info</button>
         </a>
-        <div class="">
-          <a href='/editarEncuesta?id=<%= encuestas[i].id%>'>
-            <button class="btn btn-success" type="button" name="button">Modificar</button>
-          </a>
-          <a href='/eliminarEncuesta?id=<%= encuestas[i].id%>'>
-            <button class="btn btn-success" type="button" name="button">Eliminar</button>
-          </a>
-        </div>
       </div>
     </div>
   </div>
-<% }%>
+</div>

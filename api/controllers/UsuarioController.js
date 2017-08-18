@@ -44,4 +44,19 @@ module.exports = {
     });
   },
 
+  llamarVistaPerfil: function (req, res) {
+    parametros = req.allParams();
+
+    if(parametros.id)
+    {
+      Usuario.findOne({
+        id:parametros.id
+      }).exec(function (err, usuarioEncontrado) {
+        if(err) return res.serverError(err)
+
+        return res.view('perfil', {usuario:usuarioEncontrado})
+      })
+    }
+  }
+
 };
