@@ -5,10 +5,13 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var Chart = require('chart.js');
+
 module.exports = {
 	listarEncuesta: function (req, res) {
-		idEncuesta = req.param('idEncuesta');
 
+		idEncuesta = req.param('idEncuesta');
+		
 		Encuesta.findOne({
 			id: idEncuesta
 		})
