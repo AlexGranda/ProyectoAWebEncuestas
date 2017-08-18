@@ -64,17 +64,8 @@ module.exports = {
                 res.serverError('Contrasenia encriptada incorrecta')
               },
               success: function () {
-                // Busqueda de encuestas
-                Encuesta
-                  .find()
-                  .exec(function (error, encuestasEncontradas) {
-
-                    res.cookie('idUsuario', usuarioEncontrado.id);
-
-
-                    return res.view('encuestas', {
-                      encuestas: encuestasEncontradas, idUsuario:usuarioEncontrado.id});
-                  })
+                res.cookie('idUsuario', usuarioEncontrado.id);
+                return res.redirect('/encuestas');
               }
             })
           }
