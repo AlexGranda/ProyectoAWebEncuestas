@@ -33,107 +33,68 @@
   </div>
 </div>
 
-<div class="section">
-  <div class="container">
-    <div class="row">
-      <h1>Encuestas</h1>
-      <a href='/encuestas/crear'>
-        <button class="btn btn-success" type="button" name="button">Crear</button>
-      </a>
-    </div>
-  </div>
-</div>
-
 <% for(var i=0; i<encuestas.length; i++) {%>
   <div class="section">
     <div class="container">
-      <div class="row">
-        <a href="/encuestas/detalle/<%= encuestas[i].id %>">
-          <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-              <canvas id="myChart" width="400" height="400"></canvas>
-              <script>
-                var ctx = document.getElementById("myChart");
-                var myChart = new Chart(ctx, {
-                  type: 'bar',
-                  data: {
-                    labels: [
-                      "Si", "No"
-                    ],
-                    datasets: [
+      <a href="/encuestas/detalle/<%= encuestas[i].id %>">
+        <div class="row encuesta box effect1">
+          <div class="col-sm-8 col-md-8">
+            <h3>
+              <strong><%= encuestas[i].titulo %></strong>
+            </h3>
+            <%= encuestas[i].descripcion %>
+          </div>
+          <div class="col-sm-4 col-md-4">
+            <canvas id="myChart<%= encuestas[i].id %>" width="500" height="400"></canvas>
+            <script>
+              var ctx = document.getElementById("myChart<%= encuestas[i].id %>");
+              var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: [
+                    "Si", "No"
+                  ],
+                  datasets: [
+                    {
+                      label: '# Votos!!',
+                      data: [
+                        <%= encuestas[i].likes %>, <%= encuestas[i].dislikes %>
+                      ],
+                      backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'
+                      ],
+                      borderColor: [
+                        'rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)'
+                      ],
+                      borderWidth: 1
+                    }
+                  ]
+                },
+                options: {
+                  scales: {
+                    yAxes: [
                       {
-                        label: '# Votos!!',
-                        data: [
-                          <%= encuestas[i].likes %>, <%= encuestas[i].dislikes %>
-                        ],
-                        backgroundColor: [
-                          'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'
-                        ],
-                        borderColor: [
-                          'rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)'
-                        ],
-                        borderWidth: 1
+                        ticks: {
+                          beginAtZero: true
+                        }
                       }
                     ]
-                  },
-                  options: {
-                    scales: {
-                      yAxes: [
-                        {
-                          ticks: {
-                            beginAtZero: true
-                          }
-                        }
-                      ]
-                    }
                   }
-                });
-              </script>
-
-              <div class="caption">
-                <h3><%= encuestas[i].titulo %></h3>
-                <p><%= encuestas[i].descripcion %></p>
-              </div>
-
-            </div>
+                }
+              });
+            </script>
           </div>
-        </a>
-      </div>
+
+        </div>
+      </a>
     </div>
   </div>
 <% }%>
 
-<div class="section">
-  <div class="container">
-    <div class="row">
-      <a href="detalleEncuesta.html">
-        <div class="col-md-6">
-          <h1>Encuesta 2</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-            <br>Ut enim ad minim veniam, quis nostrud</p>
-        </div>
-        <div class="col-md-6">
-          <img src="images/2015-01-07-Iowa-GOP-poll.jpg" class="img-responsive" width="300px">
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
-<div class="section">
-  <div class="container">
-    <div class="row">
-      <a href="detalleEncuesta.html">
-        <div class="col-md-6">
-          <h1>Encuesta 3</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-            <br>Ut enim ad minim veniam, quis nostrud</p>
-        </div>
-        <div class="col-md-6">
-          <img src="images/2015-01-07-Iowa-GOP-poll.jpg" class="img-responsive" width="300px">
-        </div>
-      </a>
-    </div>
-  </div>
+<a href="/encuestas/crear" class="float">
+  <i class="fa fa-plus my-float"></i>
+</a>
+<div class="label-container">
+  <div class="label-text">Crear</div>
+  <i class="fa fa-play label-arrow"></i>
 </div>
