@@ -78,16 +78,31 @@ module.exports = {
   },
 
   llamarVistaPerfil: function (req, res) {
-    parametros = req.allParams();
+    idUsuario = req.cookies.idUsuario;
 
-    if(parametros.id)
+    if(idUsuario)
     {
       Usuario.findOne({
-        id:parametros.id
+        id:idUsuario
       }).exec(function (err, usuarioEncontrado) {
         if(err) return res.serverError(err)
 
         return res.view('perfil', {usuario:usuarioEncontrado})
+      })
+    }
+  },
+
+  llamarVistaEditarUsuario: function (req, res) {
+    idUsuario = req.cookies.idUsuario;
+
+    if(idUsuario)
+    {
+      Usuario.findOne({
+        id:idUsuario
+      }).exec(function (err, usuarioEncontrado) {
+        if(err) return res.serverError(err)
+
+        return res.view('editarUsuario', {usuario:usuarioEncontrado})
       })
     }
   }
