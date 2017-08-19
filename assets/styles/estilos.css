@@ -82,8 +82,81 @@ a.float:hover + div.label-container{
 }
 
 /*
-  Footer-border
+  Footer-card
 */
 .footer-card {
   padding: 10px;
+}
+
+/*
+  Comentarios
+*/
+.detailBox {
+    width: 100%;
+    border:1px solid #bbb;
+    position: relative;
+}
+.titleBox {
+    background-color:#fdfdfd;
+    padding:10px;
+}
+.titleBox label{
+  color:#444;
+  margin:0;
+  display:inline-block;
+}
+
+.commentBox {
+    padding:10px;
+    border-top:1px dotted #bbb;
+}
+.commentBox .form-group:first-child, .actionBox .form-group:first-child {
+    width:80%;
+}
+.commentBox .form-group:nth-child(2), .actionBox .form-group:nth-child(2) {
+    width:18%;
+}
+.actionBox .form-group * {
+    width:125%;
+}
+.taskDescription {
+    margin-top:10px 0;
+}
+.commentList {
+    padding:0;
+    list-style:none;
+    max-height:auto;
+}
+.commentList li {
+    margin:0;
+    margin-top:10px
+}
+.commentList li > div {
+  display:table-cell;
+}
+.commenterImage {
+    width:30px;
+    margin-right:5px;
+    height:100%;
+    float:left;
+}
+.commenterImage img {
+    width:100%;
+    border-radius:50%;
+}
+.commentText p {
+    margin:0;
+}
+.sub-text {
+    color:#aaa;
+    font-family:verdana;
+    font-size:11px;
+}
+.actionBox {
+    border-top:1px dotted #bbb;
+    padding:10px;
+}
+.textoMaximoComentario {
+  overflow:hidden;
+  word-break: break-all;
 }
