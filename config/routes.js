@@ -60,7 +60,9 @@ module.exports.routes = {
 
   'get /eliminarEncuesta': 'EncuestaController.eliminarEncuesta',
 
-  'get /perfil': 'UsuarioController.llamarVistaPerfil'
+  'get /perfil': 'UsuarioController.llamarVistaPerfil',
+
+  'get /editarUsuario': 'UsuarioController.llamarVistaEditarUsuario'
 
 
   /***************************************************************************

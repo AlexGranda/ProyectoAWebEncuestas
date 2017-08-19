@@ -1,0 +1,88 @@
+<div class="navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Encuestas</span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/">Principal</a>
+        </li>
+        <li>
+          <a href="/contactos">Contactos</a>
+        </li>
+        <li>
+          <a href="/login">Login</a>
+        </li>
+        <li class="active">
+          <a href="#">Registro</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Editar Usuario</h1>
+        <form class="form-horizontal" action="/Usuario/editarUsuario" method="post">
+
+          <div class="form-group">
+
+            <div class="col-sm-12">
+              <input class="form-control" type="hidden" id="nombres" placeholder="Ingrese sus nombres" name="id" value="<%=usuario.id%>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="nombres" class="col-2 col-form-label">Nombres</label>
+            </div>
+            <div class="col-sm-10">
+              <input class="form-control" type="text" id="nombres" placeholder="Ingrese sus nombres" name="nombres" value="<%=usuario.nombres%>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="apellidos" class="col-2 col-form-label">Apellidos</label>
+            </div>
+            <div class="col-sm-10">
+              <input class="form-control" type="text" id="apellidos" placeholder="Ingrese sus apellidos" name="apellidos" value="<%=usuario.apellidos%>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="email" class="col-2 col-form-label">Email</label>
+            </div>
+            <div class="col-sm-10">
+              <input class="form-control" type="email" placeholder="Ingrese su email" id="example-email-input" name="correo" value="<%=usuario.correo%>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="password" class="col-2 col-form-label">Password</label>
+            </div>
+            <div class="col-sm-10">
+              <input class="form-control" type="password" placeholder="Ingrese su contrasenia" id="example-password-input" name="password" value="<%=usuario.password%>">
+            </div>
+          </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="reset" class="btn btn-outline-danger">Reset</button>
+                <button type="submit" class="btn btn-outline-success">Editar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
