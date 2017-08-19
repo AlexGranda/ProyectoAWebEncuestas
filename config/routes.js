@@ -32,15 +32,10 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  },
-  '/contactos': {
-    view: 'contactos'
-  },
-  '/login': {
-    view: 'login'
-  },
+  '/': 'RutasController.home',
+  '/contactos': 'RutasController.contactos',
+  '/login': 'RutasController.login',
+  
   '/login/autenticar': 'LoginController.login',
   '/encuestas': 'EncuestaController.listarEncuestas',
   '/encuestas/detalle/:idEncuesta': 'DetalleEncuestaController.listarEncuesta',

@@ -90,22 +90,6 @@ module.exports = {
         return res.view('perfil', {usuario:usuarioEncontrado})
       })
     }
-  },
-  llamarVistaEditarUsuario: function (req, res) {
-    parametros = req.allParams()
-
-    sails.log.info('Estas en llamarVistaEditarUsuario')
-
-    if(parametros.id)
-    {
-      Usuario.findOne({
-        id:parametros.id
-      }).exec(function (err, usuarioEncontrado) {
-        if(err) return res.serverError(err)
-
-        return res.view('editarUsuario', {usuario:usuarioEncontrado})
-      })
-    }
   }
 
 };

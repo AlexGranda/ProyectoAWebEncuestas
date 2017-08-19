@@ -1,38 +1,3 @@
-<div class="navbar">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">
-        <span>Encuestas</span>
-      </a>
-    </div>
-    <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active">
-          <a href="/">Principal</a>
-        </li>
-        <li>
-          <a href="/encuestas">Encuestas</a>
-        </li>
-        <li class="active">
-          <a href="#">Mis encuestas</a>
-        </li>
-        <li>
-          <a href="/contactos">Contactos</a>
-        </li>
-        <li>
-          <a href="#">Mi perfil</a>:
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
 <div class="section">
   <div class="container">
     <div class="row">
@@ -44,25 +9,67 @@
 <% for(var i=0; i<encuestas.length; i++) {%>
   <div class="section">
     <div class="container">
-      <div class="row">
-        <a href="/encuestas/detalle/<%= encuestas[i].id %>">
-          <div class="col-md-6">
-            <h1><%= encuestas[i].titulo %></h1>
-            <p><%= encuestas[i].descripcion %></p>
+      <a href="/encuestas/detalle/<%= encuestas[i].id %>">
+        <div class="row encuesta box effect1">
+          <div class="col-sm-8 col-md-8">
+            <h3>
+              <strong><%= encuestas[i].titulo %></strong>
+            </h3>
+            <%= encuestas[i].descripcion %>
           </div>
-          <div class="col-md-6">
-            <img src="/images/2015-01-07-Iowa-GOP-poll.jpg" class="img-responsive" width="300px">
+          <div class="col-sm-4 col-md-4">
+            <canvas id="myChart<%= encuestas[i].id %>" width="500" height="400"></canvas>
+            <script>
+              var ctx = document.getElementById("myChart<%= encuestas[i].id %>");
+              var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: [
+                    "Si", "No"
+                  ],
+                  datasets: [
+                    {
+                      label: '# Votos!!',
+                      data: [
+                        <%= encuestas[i].likes %>, <%= encuestas[i].dislikes %>
+                      ],
+                      backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'
+                      ],
+                      borderColor: [
+                        'rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)'
+                      ],
+                      borderWidth: 1
+                    }
+                  ]
+                },
+                options: {
+                  scales: {
+                    yAxes: [
+                      {
+                        ticks: {
+                          beginAtZero: true
+                        }
+                      }
+                    ]
+                  }
+                }
+              });
+            </script>
           </div>
-        </a>
-        <div class="">
-          <a href='/editarEncuesta?id=<%= encuestas[i].id%>'>
-            <button class="btn btn-success" type="button" name="button">Modificar</button>
-          </a>
-          <a href='/eliminarEncuesta?id=<%= encuestas[i].id%>'>
-            <button class="btn btn-success" type="button" name="button">Eliminar</button>
-          </a>
+          <div>
+            <div class="footer-card">
+              <a href='/editarEncuesta?id=<%= encuestas[i].id%>'>
+                <button class="btn btn-success" type="button" name="button">Modificar</button>
+              </a>
+              <a href='/eliminarEncuesta?id=<%= encuestas[i].id%>'>
+                <button class="btn btn-success" type="button" name="button">Eliminar</button>
+              </a>
+              <br>
+            </div>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 <% }%>

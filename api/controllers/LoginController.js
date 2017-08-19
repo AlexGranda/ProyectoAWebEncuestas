@@ -20,6 +20,37 @@ module.exports = {
         if (!usuarioEncontrado) {
           res.serverError('No existe el usuario')
         } else {
+
+          if (usuarioEncontrado.password==parametros.password){
+
+            Passwords.encryptPassword({password: usuarioEncontrado.password}).exec({
+              error: function (err) {
+                res.serverError('Error de encripcion')
+              },
+              success: function (passwordMarcelo) {
+                Usuario.update({
+                    id:usuarioEncontrado.id
+                  },
+                  {
+                    password:passwordMarcelo
+                  }).exec(function (err, marceloActualizado) {
+                  if(err) return res.serverError(err)
+
+                  if(!marceloActualizado){
+                    return res.serverError("El usuario no se actualizo")
+                  }
+                  else
+                  {
+                    sails.log.info('Password de usuario actualizada');
+                    res.view('homepage')
+
+                  }
+                })
+              }
+            })
+          }
+          else {
+
           Passwords
             .checkPassword({
               passwordAttempt: parametros.password,
@@ -33,20 +64,30 @@ module.exports = {
                 res.serverError('Contrasenia encriptada incorrecta')
               },
               success: function () {
-                // Busqueda de encuestas
-                Encuesta
-                  .find()
-                  .exec(function (error, encuestasEncontradas) {
-
-                    res.cookie('idUsuario', usuarioEncontrado.id);
-
-
-                    return res.view('encuestas', {
-                      encuestas: encuestasEncontradas, idUsuario:usuarioEncontrado.id});
-                  })
+                res.cookie('idUsuario', usuarioEncontrado.id);
+                req.session.authenticated = true
+                return res.redirect('/encuestas');
               }
             })
+          }
         }
       })
+    },
+
+  logout: function (req, res){
+    req.session.authenticated = false
+    return res.redirect('/');
+  },
+
+  autenticacion: function (req, res) {
+    if (req.session.authenticated) {
+      return res.view('homepage', {
+        isAutenticado: true
+      })
+    } else {
+      return res.view('homepage', {
+        isAutenticado: false
+      })
     }
+  }
 };
