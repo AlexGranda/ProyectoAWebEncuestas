@@ -32,12 +32,9 @@ module.exports = {
             Encuesta.find().exec(function (error, encuestasEncontradas) {
 
               res.cookie('idUsuario', usuarioCreado.id);
+              req.session.authenticated = true
 
-              return res.view('encuestas', {
-        				encuestas: encuestasEncontradas,
-                usuario: nuevoUsuario,
-                idUsuario: nuevoUsuario.id
-        			});
+              return res.redirect('/encuestas');
         		})
           }
         });
