@@ -48,4 +48,20 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+
+  ComentarioController: {
+    '*': ['sessionAuth']
+  },
+  DetalleEncuestaController: {
+    '*': ['sessionAuth']
+  },
+  EncuestaController: {
+    '*': ['sessionAuth']
+  },
+  EtiquetaController: {
+    '*': ['sessionAuth']
+  },
+  UsuarioController: {
+    'llamarVistaPerfil': ['sessionAuth']
+  },
 };

@@ -65,11 +65,29 @@ module.exports = {
               },
               success: function () {
                 res.cookie('idUsuario', usuarioEncontrado.id);
+                req.session.authenticated = true
                 return res.redirect('/encuestas');
               }
             })
           }
         }
       })
+    },
+
+  logout: function (req, res){
+    req.session.authenticated = false
+    return res.redirect('/');
+  },
+
+  autenticacion: function (req, res) {
+    if (req.session.authenticated) {
+      return res.view('homepage', {
+        isAutenticado: true
+      })
+    } else {
+      return res.view('homepage', {
+        isAutenticado: false
+      })
     }
+  }
 };

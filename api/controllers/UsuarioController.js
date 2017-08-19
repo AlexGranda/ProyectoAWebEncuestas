@@ -29,17 +29,18 @@ module.exports = {
           return res.serverError(error);
         } else {
           res.cookie('idUsuario', usuarioCreado.id);
+          req.session.authenticated = true;
           return res.redirect('/encuestas');
         }
       });
   },
 
   llamarVistaPerfil: function (req, res) {
-    parametros = req.allParams();
+    idUsuario = req.cookies.idUsuario;
 
-    if (parametros.id) {
+    if (idUsuario) {
       Usuario
-        .findOne({id: parametros.id})
+        .findOne({id: idUsuario})
         .exec(function (err, usuarioEncontrado) {
           if (err)
             return res.serverError(err)
